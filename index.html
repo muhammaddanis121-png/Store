@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HydraStore - Toko Item's Minecraft</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="image/a-modern-gaming-logo-design-featuring-th_owmKBQhrRR2jHIdT9pShIA_4pKfuDXlSH6iokZszYojMQ.jpeg" >
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
@@ -37,20 +38,15 @@
         <header class="bg-[#12112a] shadow-xl sticky top-0 z-20 border-b border-[#2b2a4c]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
                 <h1 class="text-4xl font-extrabold text-[#20c997] mb-2 md:mb-0 tracking-wider">
-                    ✨ HydraStore
+                    HydraStore
                 </h1>
                 
                 <nav class="flex items-center space-x-6">
                     <!-- Navigation Buttons -->
                     <a href="about.html" class="text-sm font-medium hover:text-[#20c997] transition">About Us</a>
+                    <a href="buying-instructions.html" class="text-sm font-medium hover:text-[#20c997] transition">Buying Guide</a>
 
-                    <!-- Social Media Links (Minimalist Icons) -->
-                    <a href="#" target="_blank" class="text-gray-400 hover:text-[#a55eea] transition">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12c6.627 0 12-5.373 12-12s-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-8.205c-.66 0-1.195-.536-1.195-1.2s.535-1.2 1.195-1.2c.66 0 1.2.535 1.2 1.2s-.54 1.2-1.2 1.2zm8 8.205h-2v-3.493c0-.853-.016-1.954-1.187-1.954-1.187 0-1.366.924-1.366 1.897v3.55h-2v-6h1.996v.913h.027c.394-.746 1.355-1.187 2.147-1.187 2.29 0 2.71 1.503 2.71 3.468v4.809z"></path></svg>
-                    </a>
-                    <a href="#" target="_blank" class="text-gray-400 hover:text-[#a55eea] transition">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.99 7.02c-.378.163-.785.275-1.216.326.438-.263.774-.683.932-1.185-.412.247-.87.428-1.36.526-.39-.418-.948-.679-1.564-.679-1.183 0-2.146.963-2.146 2.15 0 .167.021.33.065.485-1.782-.09-3.364-.94-4.423-2.238-.184.316-.29.683-.29 1.07 0 .745.38.1405 1.764-.74 1.106-.188 2.27-.378 3.486-.39l.206-.002c-.04.168-.063.344-.063.524 0 .736.376 1.405.952 1.792-.35-.011-.67-.11-.955-.262v.024c0 1.04 1.22 1.916 2.83 2.115-.178.049-.364.072-.556.072-.136 0-.269-.013-.397-.038.358 1.11 1.397 1.916 2.63 1.94-1.196.938-2.693 1.5-4.336 1.5s-3.34-.34-4.836-1.026c1.55.996 3.39 1.576 5.352 1.576 6.42 0 9.923-5.318 9.923-9.924 0-.15-.004-.298-.012-.446.68-.492 1.274-1.107 1.743-1.802z"></path></svg>
-                    </a>
+                    
                     
                     <!-- Cart Button -->
                     <button onclick="toggleCartSidebar()" class="relative p-2 rounded-full bg-[#20c997] hover:bg-teal-500 transition shadow-md hover:shadow-lg">
@@ -360,7 +356,7 @@
             
             if (method === 'QRIS') {
                 // Placeholder image for QRIS
-                const qrisPlaceholderUrl = "https://placehold.co/400x400/1e1c3a/20c997?text=MOCK+QRIS+SCAN";
+                const qrisPlaceholderUrl = "\image\Screenshot 2025-11-20 183006.png";
                 
                 paymentHeader.innerHTML = `Lakukan scan QRIS di bawah ini sebesar <span class="text-[#20c997] font-bold">${formatRupiah(total)}</span> menggunakan e-wallet atau mobile banking Anda.`;
                 paymentDetails.innerHTML = `
@@ -424,7 +420,7 @@
             // Simulate purchase process and show status
             
             statusMessage.innerHTML = `
-                 HARAP KIRIM BUKTI TRANSFER ${paymentMethod} <br>
+                 HARAP KIRIM BUKTI TRANSFER ${paymentMethod}, <br>
                 Halo, <span class="text-[#20c997] font-bold">${username}</span>!<br>
                 Diharap mengirim bukti transfer ke <a href="https://discord.gg/suwxKYws" target="_blank" class="text-[#a55eea] underline">Discord HydraStore</a>. Total Harga ${formatRupiah(totalAmount)}<br>
                 <span class="text-sm italic text-gray-400 mt-1 block">Status: Item akan masuk ke akun Anda <u>SETELAH MENGIRIM BUKTI TRANSFER</u></span>
@@ -438,9 +434,9 @@
             updateCart();
             
             // Optional: Auto-hide modal after a delay
-            setTimeout(() => {
-                hidePaymentModal();
-            }, 8000);
+            // setTimeout(() => {
+            //     hidePaymentModal();
+            // }, 8000);
         };
         
         // Simple error handling function (for validation)

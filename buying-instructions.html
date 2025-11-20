@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buying Instructions - HydraStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0d0c1d; color: #d1c9e3; }
+        .hero { background: linear-gradient(135deg, rgba(51,0,102,0.35), rgba(0,51,77,0.35)); border-bottom: 1px solid rgba(32,201,151,0.06); }
+        .panel { background: linear-gradient(180deg, rgba(26,0,51,0.6), rgba(45,0,77,0.5)); border: 1px solid rgba(32,201,151,0.08); }
+        .glow-title { color: #20c997; text-shadow: 0 0 16px rgba(32,201,151,0.25); }
+        .step-box { background: linear-gradient(135deg, rgba(51,0,102,0.4), rgba(0,102,102,0.3)); border-left: 4px solid #20c997; padding: 16px; border-radius: 8px; }
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #20c997; color: #000033; font-weight: bold; border-radius: 50%; margin-right: 12px; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-[#12112a] shadow-xl sticky top-0 z-20 border-b border-[#2b2a4c]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-[#20c997] mb-2 md:mb-0 tracking-wider">✨ HydraStore</h1>
+            <nav class="flex items-center space-x-6">
+                <a href="index.html" class="text-sm font-medium hover:text-[#20c997] transition">Store</a>
+                <a href="about.html" class="text-sm font-medium hover:text-[#20c997] transition">About Us</a>
+                <a href="buying-instructions.html" class="text-sm font-medium text-[#20c997]">Buying Guide</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Hero Section -->
+        <section class="hero rounded-xl p-8 panel mb-8">
+            <h2 class="text-3xl font-bold glow-title mb-4">How to Buy from HydraStore</h2>
+            <p class="text-gray-300 text-lg">Follow these simple steps to purchase your favorite Minecraft items securely and quickly.</p>
+        </section>
+
+        <!-- Step-by-Step Guide -->
+        <section class="space-y-6">
+            <!-- Step 1 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">1</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Browse & Select Items</h3>
+                        <p class="text-gray-300 mb-2">Visit the <a href="index.html" class="text-[#a55eea] underline">Store</a> and filter by your desired server using the server dropdown. Click the "<strong>+ Keranjang</strong>" button to add items to your cart.</p>
+                        <p class="text-sm text-gray-400"><strong>Tip:</strong> You can add multiple items from different servers to a single cart.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">2</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Review Your Cart</h3>
+                        <p class="text-gray-300 mb-2">Click the <strong>Cart Icon</strong> (🛒) in the top-right corner to open your shopping cart. Review all items, quantities, and the total price.</p>
+                        <p class="text-sm text-gray-400"><strong>Tip:</strong> You can remove items by clicking the "×" button next to each product.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">3</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Click "Beli Sekarang" (Buy Now)</h3>
+                        <p class="text-gray-300 mb-2">Once you're satisfied with your cart, click the green <strong>"Beli Sekarang →"</strong> button at the bottom of the cart sidebar.</p>
+                        <p class="text-sm text-gray-400"><strong>Note:</strong> This button is only enabled when your cart has at least one item.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">4</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Enter Your Minecraft Username</h3>
+                        <p class="text-gray-300 mb-2">In the checkout modal, enter your <strong>exact Minecraft username</strong> in the text field. This is crucial—items will be delivered to this account.</p>
+                        <p class="text-sm text-gray-400"><strong>Important:</strong> Double-check your username spelling. We cannot process transfers to wrong accounts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">5</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Choose Payment Method</h3>
+                        <p class="text-gray-300 mb-2">Select your preferred payment method:</p>
+                        <ul class="text-gray-300 ml-6 space-y-2 mb-2">
+                            <li><strong>🎳 QRIS</strong> — Scan using any e-wallet (GoPay, OVO, Dana, etc.) or mobile banking app</li>
+                            <li><strong>💰 GoPay</strong> — Direct transfer to HydraStore GoPay account</li>
+                        </ul>
+                        <p class="text-sm text-gray-400"><strong>Tip:</strong> QRIS is fastest and works with all major payment platforms.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">6</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Click "Lanjut ke Pembayaran" (Proceed to Payment)</h3>
+                        <p class="text-gray-300 mb-2">Review your username and payment method selection, then click the teal <strong>"Lanjut ke Pembayaran"</strong> button to continue.</p>
+                        <p class="text-sm text-gray-400"><strong>Safety Check:</strong> Make sure your username is correct before proceeding.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">7</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Complete Payment</h3>
+                        <p class="text-gray-300 mb-2">Payment details will be displayed:</p>
+                        <ul class="text-gray-300 ml-6 space-y-1 mb-2">
+                            <li><strong>QRIS:</strong> Scan the QR code with your e-wallet or mobile banking app</li>
+                            <li><strong>GoPay:</strong> Use the phone number provided and transfer the exact amount</li>
+                        </ul>
+                        <p class="text-sm text-gray-400"><strong>Important:</strong> Keep your payment proof/receipt for verification.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">8</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Click "Selesai Bayar" (Payment Complete)</h3>
+                        <p class="text-gray-300 mb-2">After making the payment, return to the payment modal and click <strong>"Selesai Bayar (Konfirmasi Status)"</strong>.</p>
+                        <p class="text-sm text-gray-400"><strong>Next Step:</strong> You'll receive instructions to send your payment proof to our Discord support channel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">9</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Send Payment Proof to Discord</h3>
+                        <p class="text-gray-300 mb-2">Join our <a href="https://discord.gg/wmZtR27U" target="_blank" class="text-[#a55eea] underline">Discord Server</a> and submit your payment proof to the <strong>#payment-verification</strong> channel, including:</p>
+                        <ul class="text-gray-300 ml-6 space-y-1 mb-2">
+                            <li>✅ Transaction ID / Reference number</li>
+                            <li>✅ Your Minecraft username</li>
+                            <li>✅ Screenshot of payment confirmation</li>
+                            <li>✅ Items purchased</li>
+                        </ul>
+                        <p class="text-sm text-gray-400"><strong>Processing Time:</strong> Admins will verify and deliver items within 5-10 minutes after verification.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Step -->
+            <div class="step-box">
+                <div class="flex items-start">
+                    <span class="step-number">✓</span>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-[#20c997] mb-2">Items Delivered!</h3>
+                        <p class="text-gray-300 mb-2">Once verified, your purchased items will be delivered to your Minecraft account on the chosen server.</p>
+                        <p class="text-sm text-gray-400"><strong>Need Help?</strong> If you don't receive your items within 15 minutes, contact an admin in Discord or check the <a href="about.html" class="text-[#a55eea] underline">About Us</a> page for trusted admin contacts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="mt-12 panel rounded-xl p-6">
+            <h3 class="text-2xl font-bold text-[#20c997] mb-6">Frequently Asked Questions</h3>
+            <div class="space-y-4">
+                <div>
+                    <p class="text-[#a55eea] font-semibold">❓ What if I enter the wrong username?</p>
+                    <p class="text-gray-300 text-sm mt-1">Contact an admin immediately with your transaction proof. We may be able to redirect the items, but this takes extra time.</p>
+                </div>
+                <div>
+                    <p class="text-[#a55eea] font-semibold">❓ How long does delivery take?</p>
+                    <p class="text-gray-300 text-sm mt-1">After payment verification (5-10 minutes), items are delivered within the same timeframe. Total: 10-20 minutes typically.</p>
+                </div>
+                <div>
+                    <p class="text-[#a55eea] font-semibold">❓ Can I buy for a friend?</p>
+                    <p class="text-gray-300 text-sm mt-1">Yes! Just enter their Minecraft username in Step 4. Make sure you have permission and the correct spelling.</p>
+                </div>
+                <div>
+                    <p class="text-[#a55eea] font-semibold">❓ What if payment fails?</p>
+                    <p class="text-gray-300 text-sm mt-1">Your items remain in the cart. Try again or contact support. No charges are made without successful payment.</p>
+                </div>
+                <div>
+                    <p class="text-[#a55eea] font-semibold">❓ Is my payment information secure?</p>
+                    <p class="text-gray-300 text-sm mt-1">We use QRIS and GoPay—both are handled by secure third-party payment providers. We never store card details.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="mt-8 hero rounded-xl p-8 panel text-center">
+            <h3 class="text-2xl font-bold text-[#20c997] mb-4">Ready to Buy?</h3>
+            <p class="text-gray-300 mb-6">Head to the store and start shopping for your favorite Minecraft items today!</p>
+            <a href="index.html" class="inline-block px-6 py-3 bg-[#20c997] text-black rounded-lg font-bold hover:bg-teal-500 transition">Go to Store →</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b0a18] py-6 mt-8 border-t border-[#2b2a4c]">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">&copy; 2025 HydraStore • Economy Crystal Marketplace • <a href="https://discord.gg/wmZtR27U" target="_blank" class="text-[#20c997] hover:underline">Support Discord</a></div>
+    </footer>
+</body>
+</html>
