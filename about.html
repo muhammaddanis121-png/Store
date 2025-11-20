@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About - HydraStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0d0c1d; color: #d1c9e3; }
+        .hero { background: linear-gradient(135deg, rgba(51,0,102,0.35), rgba(0,51,77,0.35)); border-bottom: 1px solid rgba(32,201,151,0.06); }
+        .panel { background: linear-gradient(180deg, rgba(26,0,51,0.6), rgba(45,0,77,0.5)); border: 1px solid rgba(32,201,151,0.08); }
+        .glow-title { color: #20c997; text-shadow: 0 0 16px rgba(32,201,151,0.25); }
+        .tag { color: #a55eea; background: rgba(165,94,234,0.06); padding: 4px 8px; border-radius: 9999px; font-weight:600 }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-[#12112a] shadow-xl sticky top-0 z-20 border-b border-[#2b2a4c]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-[#20c997] mb-2 md:mb-0 tracking-wider">✨ HydraStore</h1>
+            <nav class="flex items-center space-x-6">
+                <a href="index.html" class="text-sm font-medium hover:text-[#20c997] transition">Store</a>
+                <a href="about.html" class="text-sm font-medium text-[#20c997]">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section class="hero rounded-xl p-8 panel">
+            <h2 class="text-2xl font-bold glow-title">About HydraStore</h2>
+            <p class="mt-4 text-gray-300">HydraStore is a premium economy-crystal themed marketplace for Minecraft items. We focus on secure trades, fast delivery, and a beautiful shopping experience inspired by crystalline aesthetics.</p>
+            <p class="mt-2 text-gray-400">This About page replaces the old popup modal — it's a standalone page to show store info, trusted admins, and trusted members who tried the store.</p>
+        </section>
+
+        <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="panel rounded-xl p-6">
+                <h3 class="text-xl font-semibold text-[#20c997]">Trusted Admins</h3>
+                <p class="text-sm text-gray-400 mt-2">These admins are trusted contacts who helped test and moderate the store.</p>
+                <ul class="mt-4 space-y-3">
+                    <li class="p-3 bg-[#12112a] rounded-lg border border-[#2b2a4c]"><span class="tag">Owner</span> <strong class="ml-2">DannGik</strong> — Owner / Lead Operator</li>
+                    <li class="p-3 bg-[#12112a] rounded-lg border border-[#2b2a4c]"><span class="tag">Admin</span> <strong class="ml-2">ImagineLosingF</strong> — Payments & Support</li>
+                    <li class="p-3 bg-[#12112a] rounded-lg border border-[#2b2a4c]"><span class="tag">Admin</span> <strong class="ml-2">Mavzz</strong> — Inventory & Delivery</li>
+                </ul>
+            </div>
+
+            <div class="panel rounded-xl p-6">
+                <h3 class="text-xl font-semibold text-[#a55eea]">Trusted Members (Testers)</h3>
+                <p class="text-sm text-gray-400 mt-2">Members who helped test purchases, delivery, and reporting.</p>
+                <ul class="mt-4 space-y-3">
+                    <li class="p-3 bg-[#12112a] rounded-lg border border-[#2b2a4c]"><strong>NotchFan</strong> — Test purchase: Diamond Sword</li>
+                    <li class="p-3 bg-[#12112a] rounded-lg border border-[#2b2a4c]"><strong>PvPQueen</strong> — Test purchase: Armor Kit</li>
+                    <li class="p-3 bg-[#12112a] rounded-lg border border-[#2b2a4c]"><strong>BuilderBro</strong> — Test purchase: Base Stash</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="mt-8 panel rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-white">Discord Channel</h3>
+            <p class="text-sm text-gray-400 mt-2">If you want to verify transactions or report an issue, reach out to any of the trusted admins here.</p>
+            <div class="mt-4 flex gap-3">
+                <a href="index.html" class="px-4 py-2 bg-[#20c997] text-black rounded-lg font-bold">Back to Store</a>
+                <a href="https://discord.gg/wmZtR27U" target="_blank" class="px-4 py-2 border border-[#2b2a4c] rounded-lg text-gray-300 hover:text-[#20c997] transition">Discord</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#0b0a18] py-6 mt-8 border-t border-[#2b2a4c]">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">&copy; 2025 HydraStore • Economy Crystal Marketplace</div>
+    </footer>
+</body>
+</html>

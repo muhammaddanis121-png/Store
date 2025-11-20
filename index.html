@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydraStore - Toko Item's Minecraft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0c1d; /* Deep Blue/Purple Crystal Theme */
+            color: #d1c9e3;
+        }
+        /* Custom Crystal Card Hover Effect */
+        .crystal-card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        .crystal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(32, 201, 151, 0.2), 0 3px 6px rgba(32, 201, 151, 0.1);
+            border-color: #20c997; /* Teal border on hover */
+        }
+        /* Custom scrollbar */
+        .cart-list::-webkit-scrollbar { width: 8px; }
+        .cart-list::-webkit-scrollbar-thumb { background-color: #4a5568; border-radius: 4px; }
+        .cart-list::-webkit-scrollbar-track { background-color: #1e293b; }
+    </style>
+</head>
+<body class="selection:bg-teal-500 selection:text-white">
+
+    <!-- Main Application Container -->
+    <div id="app" class="min-h-screen">
+        
+        <!-- Header & Navbar -->
+        <header class="bg-[#12112a] shadow-xl sticky top-0 z-20 border-b border-[#2b2a4c]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-4xl font-extrabold text-[#20c997] mb-2 md:mb-0 tracking-wider">
+                    ✨ HydraStore
+                </h1>
+                
+                <nav class="flex items-center space-x-6">
+                    <!-- Navigation Buttons -->
+                    <a href="about.html" class="text-sm font-medium hover:text-[#20c997] transition">About Us</a>
+
+                    <!-- Social Media Links (Minimalist Icons) -->
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-[#a55eea] transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12c6.627 0 12-5.373 12-12s-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-8.205c-.66 0-1.195-.536-1.195-1.2s.535-1.2 1.195-1.2c.66 0 1.2.535 1.2 1.2s-.54 1.2-1.2 1.2zm8 8.205h-2v-3.493c0-.853-.016-1.954-1.187-1.954-1.187 0-1.366.924-1.366 1.897v3.55h-2v-6h1.996v.913h.027c.394-.746 1.355-1.187 2.147-1.187 2.29 0 2.71 1.503 2.71 3.468v4.809z"></path></svg>
+                    </a>
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-[#a55eea] transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.99 7.02c-.378.163-.785.275-1.216.326.438-.263.774-.683.932-1.185-.412.247-.87.428-1.36.526-.39-.418-.948-.679-1.564-.679-1.183 0-2.146.963-2.146 2.15 0 .167.021.33.065.485-1.782-.09-3.364-.94-4.423-2.238-.184.316-.29.683-.29 1.07 0 .745.38.1405 1.764-.74 1.106-.188 2.27-.378 3.486-.39l.206-.002c-.04.168-.063.344-.063.524 0 .736.376 1.405.952 1.792-.35-.011-.67-.11-.955-.262v.024c0 1.04 1.22 1.916 2.83 2.115-.178.049-.364.072-.556.072-.136 0-.269-.013-.397-.038.358 1.11 1.397 1.916 2.63 1.94-1.196.938-2.693 1.5-4.336 1.5s-3.34-.34-4.836-1.026c1.55.996 3.39 1.576 5.352 1.576 6.42 0 9.923-5.318 9.923-9.924 0-.15-.004-.298-.012-.446.68-.492 1.274-1.107 1.743-1.802z"></path></svg>
+                    </a>
+                    
+                    <!-- Cart Button -->
+                    <button onclick="toggleCartSidebar()" class="relative p-2 rounded-full bg-[#20c997] hover:bg-teal-500 transition shadow-md hover:shadow-lg">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span id="cartCount" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <h2 class="text-3xl font-bold mb-8 text-white text-center">Item dan Base di beberapa server Minecraft EcoCPVP</h2>
+            
+            <!-- Server Category Filter -->
+            <div class="mb-8 p-4 bg-[#1e1c3a] rounded-xl shadow-inner border border-[#2b2a4c]">
+                <label for="serverFilter" class="block text-lg font-semibold mb-3 text-[#a55eea]">Pilih Kategori Server:</label>
+                <select id="serverFilter" onchange="filterProducts()" class="w-full md:w-1/3 p-3 bg-[#12112a] border border-[#2b2a4c] rounded-lg text-white focus:ring-[#20c997] focus:border-[#20c997]">
+                    <option value="All">Semua Server</option>
+                    <!-- Options populated by JS -->
+                </select>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Products will be generated here by JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- About page moved to separate file: about.html -->
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-[#1e1c3a] shadow-2xl transform translate-x-full transition-transform duration-300 z-40 p-4 flex flex-col border-l border-[#2b2a4c]">
+        <div class="flex justify-between items-center border-b pb-3 border-[#2b2a4c]">
+            <h3 class="text-2xl font-bold text-[#20c997]">Keranjang Belanja</h3>
+            <button onclick="toggleCartSidebar()" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+        </div>
+        
+        <ul id="cartList" class="flex-grow my-4 space-y-3 overflow-y-auto cart-list">
+            <!-- Cart items will be rendered here -->
+        </ul>
+        
+        <div class="border-t pt-4 border-[#2b2a4c]">
+            <div class="flex justify-between items-center text-xl font-semibold mb-3">
+                <span>Total:</span>
+                <span id="cartTotal" class="text-white font-extrabold">${formatRupiah(0)}</span>
+            </div>
+            <button onclick="showCheckoutModal()" id="buyButton" class="w-full bg-[#a55eea] text-white py-3 rounded-lg font-bold hover:bg-purple-700 transition shadow-xl disabled:opacity-50" disabled>
+                Beli Sekarang &rarr;
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50 p-4">
+        <div class="bg-[#1e1c3a] p-8 rounded-xl shadow-2xl max-w-xl w-full border-2 border-[#a55eea]">
+            <h3 class="text-2xl font-bold text-[#20c997] border-b pb-3 border-[#2b2a4c] mb-6">Langkah Terakhir Pembelian</h3>
+            
+            <div id="checkoutContent">
+                <!-- Username Input Field (Appears before payment choice) -->
+                <div class="mb-6">
+                    <label for="customerUsername" class="block text-sm font-medium text-gray-400 mb-2">Masukkan Minecraft Username Anda:</label>
+                    <input type="text" id="customerUsername" class="w-full p-3 bg-[#12112a] border border-[#2b2a4c] rounded-lg focus:ring-[#20c997] focus:border-[#20c997] text-white" placeholder="contoh: Notch" required>
+                </div>
+                
+                <p class="text-lg font-semibold mb-4 text-[#a55eea]">Pilih Metode Pembayaran:</p>
+                <div class="space-y-4 mb-8">
+                    <div class="p-4 bg-[#12112a] rounded-lg cursor-pointer border-2 border-transparent has-[:checked]:border-[#20c997] transition">
+                        <label class="flex items-center space-x-3 w-full">
+                            <input type="radio" name="paymentMethod" value="QRIS" class="form-radio text-[#20c997] w-5 h-5" checked>
+                            <span class="text-white font-medium">QRIS (Semua E-Wallet & Bank)</span>
+                        </label>
+                    </div>
+                    <div class="p-4 bg-[#12112a] rounded-lg cursor-pointer border-2 border-transparent has-[:checked]:border-[#20c997] transition">
+                        <label class="flex items-center space-x-3 w-full">
+                            <input type="radio" name="paymentMethod" value="Gopay" class="form-radio text-[#20c997] w-5 h-5">
+                            <span class="text-white font-medium">GoPay (Transfer ke Nomor)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-4 pt-4 border-t border-[#2b2a4c]">
+                    <button onclick="hideCheckoutModal()" class="px-5 py-2 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-700 transition">
+                        Batal
+                    </button>
+                    <button onclick="confirmPurchase()" id="confirmPurchaseBtn" class="px-5 py-2 bg-[#20c997] text-white rounded-lg font-bold hover:bg-teal-500 transition shadow-md">
+                        Lanjut ke Pembayaran
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal (Displays QRIS/GoPay details) -->
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50 p-4">
+        <div class="bg-[#1e1c3a] p-8 rounded-xl shadow-2xl max-w-lg w-full text-center border-2 border-[#20c997]">
+            <h3 class="text-3xl font-bold text-[#a55eea] mb-4">Detail Pembayaran</h3>
+            <p id="paymentHeader" class="text-white text-lg mb-6"></p>
+            
+            <div id="paymentDetails" class="p-6 bg-[#12112a] rounded-xl mb-6">
+                <!-- Payment content (QRIS image or GoPay number) will be inserted here -->
+            </div>
+            
+            <div id="purchaseStatusMessage" class="hidden text-center p-3 my-4 rounded-lg font-semibold">
+                <!-- Status message will appear here -->
+            </div>
+
+            <button onclick="finalizePurchase()" id="finalizeBtn" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 transition shadow-lg">
+                Selesai Bayar
+            </button>
+            <button onclick="hidePaymentModal()" class="mt-3 text-gray-400 hover:text-white transition text-sm">Kembali</button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            // Kampungeles Server
+            { id: 1, name: "Skeleton Spawner", price: 3000, server: "Kampungeles Server", description: "Skeleton spawner untuk mendapatkan bone dengan jumlah banyak." },
+            { id: 2, name: "Base Stash", price: 20000, server: "Kampungeles Server", description: "Stash dengan desain tema gelap dan lengkap dengan diamond armor set." },
+            { id: 3, name: "Base Farm [Fungus]", price: 5000, server: "Kampungeles Server", description: "Farm fungus ditenagai dengan mesin redstone C3 dengan 12 modules."},
+            { id: 4, name: "Armor diamond kit", price: 5000, server: "Kampungeles Server", description: "Armor diamond full set + crystal dan anchor beserta lainnya."},
+            // HitmanSMP Server
+            { id: 1, name: "Skeleton Spawner", price: 500, server: "HitmanSMP Server", description: "Skeleton spawner untuk mendapatkan bone dengan jumlah banyak." },
+            { id: 2, name: "Base Stash", price: 5000, server: "HitmanSMP Server", description: "Stash dengan desain tema gelap dan lengkap dengan diamond armor set." },
+            { id: 3, name: "Base Farm [Fungus]", price: 3000, server: "HitmanSMP Server", description: "Farm fungus ditenagai dengan mesin redstone C3 dengan 12 modules."},
+            { id: 4, name: "Armor diamond kit", price: 1500, server: "HitmanSMP Server", description: "Armor diamond full set + crystal dan anchor beserta lainnya."},
+            // SukrisnaSMP Server
+            { id: 1, name: "Skeleton Spawner", price: 1000, server: "SukrisnaSMP Server", description: "Skeleton spawner untuk mendapatkan bone dengan jumlah banyak." },
+            { id: 2, name: "Base Stash", price: 10000, server: "SukrisnaSMP Server", description: "Stash dengan desain tema gelap dan lengkap dengan diamond armor set." },
+            { id: 3, name: "Base Farm [Fungus]", price: 5000, server: "SukrisnaSMP Server", description: "Farm fungus ditenagai dengan mesin redstone C3 dengan 12 modules."},
+            { id: 4, name: "Armor netherite kit", price: 3000, server: "SukrisnaSMP Server", description: "Armor netherite full set + crystal dan anchor beserta lainnya."},
+        ];
+
+        const SERVER_CATEGORIES = [...new Set(products.map(p => p.server))];
+
+        let cart = [];
+        let purchaseData = {
+            username: '',
+            paymentMethod: '',
+            totalAmount: 0
+        };
+
+        // --- Utility Functions ---
+
+        /**
+         * Format number to Indonesian Rupiah (Rp)
+         */
+        const formatRupiah = (amount) => {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(amount);
+        };
+        
+        const getCartTotal = () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+        // --- Rendering Functions ---
+        
+        /**
+         * Populates server categories in the filter dropdown.
+         */
+        const populateServerFilter = () => {
+            const filter = document.getElementById('serverFilter');
+            SERVER_CATEGORIES.forEach(server => {
+                const option = document.createElement('option');
+                option.value = server;
+                option.textContent = server;
+                filter.appendChild(option);
+            });
+        };
+
+        /**
+         * Renders product cards based on the selected server filter.
+         */
+        const renderProducts = (server = 'All') => {
+            const productGrid = document.getElementById('productGrid');
+            const filteredProducts = server === 'All'
+                ? products
+                : products.filter(p => p.server === server);
+            
+            if (filteredProducts.length === 0) {
+                productGrid.innerHTML = '<p class="text-xl text-center col-span-full py-10 text-gray-500">Tidak ada item yang ditemukan untuk kategori server ini.</p>';
+                return;
+            }
+
+            productGrid.innerHTML = filteredProducts.map(product => `
+                <div class="crystal-card bg-[#1e1c3a] p-5 rounded-xl border border-[#2b2a4c] shadow-lg flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-medium text-[#a55eea] bg-[#2b2a4c] px-3 py-1 rounded-full mb-2 inline-block">${product.server}</span>
+                        <h3 class="text-xl font-semibold mb-2 text-[#20c997]">${product.name}</h3>
+                        <p class="text-sm text-gray-400 mb-4">${product.description}</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-3">
+                        <span class="text-lg font-bold text-white">${formatRupiah(product.price)}</span>
+                        <button onclick="addToCart(${product.id})" class="bg-[#20c997] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-teal-500 transition shadow-md">
+                            + Keranjang
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        };
+        
+        const filterProducts = () => {
+            const selectedServer = document.getElementById('serverFilter').value;
+            renderProducts(selectedServer);
+        };
+
+
+        /**
+         * Updates the cart sidebar content and total.
+         */
+        const updateCart = () => {
+            const cartList = document.getElementById('cartList');
+            const cartTotalElement = document.getElementById('cartTotal');
+            const cartCountElement = document.getElementById('cartCount');
+            const buyButton = document.getElementById('buyButton');
+
+            const total = getCartTotal();
+            const totalItems = cart.reduce((count, item) => count + item.quantity, 0);
+
+            if (cart.length === 0) {
+                cartList.innerHTML = '<li class="text-center text-gray-500 italic p-4">Keranjang kosong. Tambahkan item kristal!</li>';
+                buyButton.disabled = true;
+            } else {
+                cartList.innerHTML = cart.map(item => `
+                    <li class="flex justify-between items-center bg-[#12112a] p-3 rounded-lg border border-[#2b2a4c]">
+                        <div class="flex-grow">
+                            <p class="text-white font-medium">${item.name}</p>
+                            <p class="text-sm text-gray-400">${formatRupiah(item.price)} x ${item.quantity}</p>
+                        </div>
+                        <button onclick="removeItem(${item.id})" class="text-red-500 hover:text-red-400 ml-4 font-bold text-lg leading-none">
+                            &times;
+                        </button>
+                    </li>
+                `).join('');
+                buyButton.disabled = false;
+            }
+
+            cartTotalElement.textContent = formatRupiah(total);
+            cartCountElement.textContent = totalItems.toString();
+        };
+
+        // --- Cart Logic ---
+
+        /**
+         * Adds a product to the cart or increments its quantity.
+         */
+        const addToCart = (productId) => {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCart();
+        };
+
+        /**
+         * Removes an item completely from the cart.
+         */
+        const removeItem = (productId) => {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        };
+        
+        // --- Modal/Sidebar Handlers ---
+
+        const toggleCartSidebar = () => {
+            document.getElementById('cartSidebar').classList.toggle('translate-x-full');
+        };
+        
+        // About page is now a standalone page (about.html); modal removed.
+
+        const showCheckoutModal = () => {
+            if (cart.length === 0) return;
+            toggleCartSidebar();
+            
+            // Clear username input and reset state
+            document.getElementById('customerUsername').value = '';
+            document.getElementById('checkoutModal').classList.remove('hidden');
+            document.getElementById('checkoutModal').classList.add('flex');
+        };
+        
+        const hideCheckoutModal = () => {
+            document.getElementById('checkoutModal').classList.add('hidden');
+            document.getElementById('checkoutModal').classList.remove('flex');
+        };
+        
+        const showPaymentModal = (method) => {
+            hideCheckoutModal();
+            
+            const paymentModal = document.getElementById('paymentModal');
+            const paymentDetails = document.getElementById('paymentDetails');
+            const paymentHeader = document.getElementById('paymentHeader');
+            const total = getCartTotal();
+
+            paymentDetails.innerHTML = ''; // Clear previous content
+            document.getElementById('purchaseStatusMessage').classList.add('hidden'); // Hide status message
+            document.getElementById('finalizeBtn').disabled = false;
+            
+            if (method === 'QRIS') {
+                // Placeholder image for QRIS
+                const qrisPlaceholderUrl = "https://placehold.co/400x400/1e1c3a/20c997?text=MOCK+QRIS+SCAN";
+                
+                paymentHeader.innerHTML = `Lakukan scan QRIS di bawah ini sebesar <span class="text-[#20c997] font-bold">${formatRupiah(total)}</span> menggunakan e-wallet atau mobile banking Anda.`;
+                paymentDetails.innerHTML = `
+                    <img src="${qrisPlaceholderUrl}" alt="Mock QRIS Code" class="mx-auto w-48 h-48 rounded-lg mb-4 border-4 border-white">
+                    <p class="text-sm text-gray-400">Merchant ID: HYDRA.STORE.ID</p>
+                    <p class="text-lg font-bold text-white mt-2">${formatRupiah(total)}</p>
+                `;
+            } else if (method === 'Gopay') {
+                const gopayNumber = '0856-9586-4778 (HydraStore)';
+                
+                paymentHeader.innerHTML = `Transfer dana sebesar <span class="text-[#20c997] font-bold">${formatRupiah(total)}</span> ke nomor GoPay berikut:`;
+                paymentDetails.innerHTML = `
+                    <p class="text-3xl font-extrabold text-[#a55eea] mb-2">${gopayNumber}</p>
+                    <p class="text-white text-xl font-bold mt-4">Jumlah Transfer: ${formatRupiah(total)}</p>
+                    <p class="text-sm text-gray-400 mt-4">Catatan: Harap sertakan username Anda dalam deskripsi transfer jika memungkinkan.</p>
+                `;
+            }
+
+            paymentModal.classList.remove('hidden');
+            paymentModal.classList.add('flex');
+        };
+        
+        const hidePaymentModal = () => {
+            document.getElementById('paymentModal').classList.add('hidden');
+            document.getElementById('paymentModal').classList.remove('flex');
+        };
+
+        /**
+         * Step 1: Confirm Username and select Payment Method.
+         */
+        const confirmPurchase = () => {
+            const customerUsernameInput = document.getElementById('customerUsername');
+            const customerUsername = customerUsernameInput.value.trim();
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            
+            if (!customerUsername) {
+                // Use custom message box instead of alert
+                alertError('Harap masukkan Minecraft Username Anda untuk melanjutkan ke pembayaran.');
+                return;
+            }
+            
+            // Store purchase details temporarily
+            purchaseData.username = customerUsername;
+            purchaseData.paymentMethod = selectedMethod;
+            purchaseData.totalAmount = getCartTotal();
+            
+            // Move to payment modal
+            showPaymentModal(selectedMethod);
+        };
+        
+        /**
+         * Step 2: Finalize purchase after payment details are shown.
+         */
+        const finalizePurchase = () => {
+            const statusMessage = document.getElementById('purchaseStatusMessage');
+            const finalizeBtn = document.getElementById('finalizeBtn');
+            
+            const { username, paymentMethod, totalAmount } = purchaseData;
+            const totalItems = cart.reduce((count, item) => count + item.quantity, 0);
+
+            // Simulate purchase process and show status
+            
+            statusMessage.innerHTML = `
+                 HARAP KIRIM BUKTI TRANSFER ${paymentMethod} <br>
+                Halo, <span class="text-[#20c997] font-bold">${username}</span>!<br>
+                Diharap mengirim bukti transfer ke <a href="https://discord.gg/suwxKYws" target="_blank" class="text-[#a55eea] underline">Discord HydraStore</a>. Total Harga ${formatRupiah(totalAmount)}<br>
+                <span class="text-sm italic text-gray-400 mt-1 block">Status: Item akan masuk ke akun Anda <u>SETELAH MENGIRIM BUKTI TRANSFER</u></span>
+            `;
+            statusMessage.className = 'text-center p-3 my-4 rounded-lg font-semibold bg-green-800 text-green-200';
+            statusMessage.classList.remove('hidden');
+
+            // Disable button and clear cart state after successful confirmation
+            finalizeBtn.disabled = true;
+            cart = [];
+            updateCart();
+            
+            // Optional: Auto-hide modal after a delay
+            setTimeout(() => {
+                hidePaymentModal();
+            }, 8000);
+        };
+        
+        // Simple error handling function (for validation)
+        const alertError = (message) => {
+            // In a real app, this would be a custom modal. For simplicity here, we use a basic DOM manipulation.
+            const checkoutModal = document.getElementById('checkoutModal');
+            let errorBox = checkoutModal.querySelector('#usernameError');
+            
+            if (!errorBox) {
+                errorBox = document.createElement('div');
+                errorBox.id = 'usernameError';
+                errorBox.className = 'p-3 mb-4 rounded-lg bg-red-800 text-red-100 font-semibold text-sm';
+                checkoutModal.querySelector('#checkoutContent').prepend(errorBox);
+            }
+            errorBox.textContent = message;
+            errorBox.style.display = 'block';
+            setTimeout(() => { errorBox.style.display = 'none'; }, 3000);
+        };
+
+
+        // --- Initialization ---
+        window.onload = () => {
+            populateServerFilter();
+            renderProducts();
+            updateCart();
+        };
+
+    </script>
+
+</body>
+</html>
